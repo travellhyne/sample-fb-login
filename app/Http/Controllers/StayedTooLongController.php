@@ -9,11 +9,12 @@ use App\User;
 
 class StayedTooLongController extends Controller
 {
-    public function alert(Request $request) 
+    public function alert($id) 
     {
-        $user = auth()->authenticate();
-        $data = $request->session()->all();
-
-        return response()->json($user);
+        $user = User::find($id);
+        Mail::to($user->email)->send(new StayedTooLong());
+        return response()->json([
+            'message' => 'Email sent!'
+        ]);
     }
 }

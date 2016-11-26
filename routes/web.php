@@ -22,4 +22,4 @@ Route::get('/home', 'HomeController@index');
 Route::get('/redirect', 'FacebookAuthController@redirect');
 Route::get('/callback', 'FacebookAuthController@callback');
 
-Route::get('/alert', 'StayedTooLongController@alert');
+Route::get('/alert/{id}', 'StayedTooLongController@alert');

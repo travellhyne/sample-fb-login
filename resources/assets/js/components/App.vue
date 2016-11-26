@@ -17,17 +17,18 @@
 <script>
     import 'whatwg-fetch';
     export default {
+        props: ['user'],
         mounted() {
             console.log('Component ready.');
 
             setTimeout(() => {
-                fetch('/alert', {
+                fetch('/alert/' + this.user, {
                     headers: {
-                        'X-CSRFToken': window.Laravel.csrfToken
+                        'X-CSRF-Token': window.Laravel.csrfToken
                     }
                 }).then(response => response.json())
                 .then(json => console.log(json));
-            }, 3000);
+            }, 1000 * 60 * 5); // 5 minutes
         }
     }
 </script>
