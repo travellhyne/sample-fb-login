@@ -23,6 +23,7 @@ class FacebookAccountService {
         $user = User::create([
           'email' => $facebookUser->getEmail(),
           'name' => $facebookUser->getName(),
+          'password' => bcrypt($facebookUser->getEmail()),
         ]);
       }
 
