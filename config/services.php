@@ -41,4 +41,9 @@ return [
         'redirect' => 'http://sample-fb-login.dev/callback',
     ],
 
+    'mailgun' => [
+        'domain' => 'sandbox4138277468424981a807da50f6f8ddbe.mailgun.org',
+        'secret' => 'key-8a436b5f12fb8a08a86db0060c3a02bb',
+    ],
+
 ];
