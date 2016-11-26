@@ -28,6 +28,7 @@ class StayedTooLong extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->from('ramalneiljohn@gmail.com')
+            ->view('emails.alert');
     }
 }
