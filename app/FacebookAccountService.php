@@ -26,8 +26,8 @@ class FacebookAccountService {
         ]);
       }
 
-      $account->user()->associate($user);
-      $account->save();
+      $fb_account->user()->associate($user);
+      $fb_account->save();
       return $user;
     }
   }
