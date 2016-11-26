@@ -9,6 +9,9 @@
 
                 <div class="panel-body">
                     You are logged in!
+                    <div id="app">
+                        <my-app></my-app>
+                    </div>
                 </div>
             </div>
         </div>
