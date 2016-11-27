@@ -7,6 +7,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\FacebookAccountService;
 use Socialite;
+use Carbon\Carbon;
+use App\Jobs\SendFiveMinuteEmail;
 
 class FacebookAuthController extends Controller
 {
@@ -20,6 +22,10 @@ class FacebookAuthController extends Controller
         $facebookUser = $service->createOrGetUser(Socialite::driver('facebook')->user());
 
         auth()->login($facebookUser);
+
+        $job = (new SendFiveMinuteEmail($facebookUser))
+            ->delay(Carbon::now()->addMinutes(5));
+        dispatch($job);
 
         return redirect()->to('/home');
     }
